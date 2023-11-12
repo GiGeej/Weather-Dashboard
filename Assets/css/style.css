@@ -49,3 +49,47 @@ input[type="button"] {
   background-color: #ecf0f1;
   border-radius: 5px;
 }
+
+.weather-box {
+  border: 2px solid #333;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.forecast-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the boxes horizontally */
+}
+
+.forecast-box-container {
+  display: flex;
+  flex-direction: row; /* Display forecast boxes in a row */
+  justify-content: center; /* Center the boxes horizontally */
+}
+
+.forecast-box {
+  border: 2px solid blue;
+  padding: 10px;
+  margin-bottom: 10px; /* Add some spacing between forecast boxes */
+}
+
+/*icons*/
+.weather-box img,
+.forecast-box img {
+  width: 50px; /* Adjust the size of the weather icons */
+  height: 50px;
+}
+
+.search-history {
+  margin-top: 10px; /* Add some top margin for spacing */
+}
+
+.history-item {
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+}
