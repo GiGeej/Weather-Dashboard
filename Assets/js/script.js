@@ -34,7 +34,6 @@ function searchWeather() {
     );
 }
 
-// Display weather data Function
 function displayWeather(currentWeatherData, forecastData) {
   const weatherResult = document.getElementById("weatherResult");
   weatherResult.innerHTML = "";
@@ -42,23 +41,26 @@ function displayWeather(currentWeatherData, forecastData) {
   // Display current weather
   const currentWeather = document.createElement("div");
   currentWeather.className = "weather-box";
+  const weatherIconCode = currentWeatherData.weather[0].icon;
+  const weatherIconUrl = `https://openweathermap.org/img/w/${weatherIconCode}.png`;
   currentWeather.innerHTML = `
-          <h2>${
-            currentWeatherData.name
-          } (${new Date().toLocaleDateString()})</h2>
-          <ul>
-              <li>Temperature: ${currentWeatherData.main.temp}°C</li>
-              <li>Wind: ${currentWeatherData.wind.speed} m/s</li>
-              <li>Humidity: ${currentWeatherData.main.humidity}%</li>
-          </ul>
-      `;
+            <h2>${
+              currentWeatherData.name
+            } (${new Date().toLocaleDateString()})</h2>
+            <img src="${weatherIconUrl}" alt="Weather Icon">
+            <ul>
+                <li>Temperature: ${currentWeatherData.main.temp}°C</li>
+                <li>Humidity: ${currentWeatherData.main.humidity}%</li>
+                <li>Wind Speed: ${currentWeatherData.wind.speed} m/s</li>
+            </ul>
+        `;
   weatherResult.appendChild(currentWeather);
 
   // Display 5-day forecast
   const forecastContainer = document.createElement("div");
   forecastContainer.innerHTML = "<h3>5-Day Forecast</h3>";
   forecastContainer.className = "forecast-container";
-  weatherResult.appendChild(forecastContainer); // Move the forecast container outside the loop
+  weatherResult.appendChild(forecastContainer);
   const forecastBoxContainer = document.createElement("div");
   forecastBoxContainer.className = "forecast-box-container";
   forecastContainer.appendChild(forecastBoxContainer);
@@ -67,14 +69,17 @@ function displayWeather(currentWeatherData, forecastData) {
     const forecastItem = forecastData.list[i * 8];
     const forecastBox = document.createElement("div");
     forecastBox.className = "forecast-box";
+    const forecastIconCode = forecastItem.weather[0].icon;
+    const forecastIconUrl = `https://openweathermap.org/img/w/${forecastIconCode}.png`;
     forecastBox.innerHTML = `
-              <h4>${new Date(forecastItem.dt_txt).toLocaleDateString()}</h4>
-              <ul>
-                  <li>Temperature: ${forecastItem.main.temp}°C</li>
-                  <li>Wind: ${forecastItem.wind.speed} m/s</li>
-                  <li>Humidity: ${forecastItem.main.humidity}%</li>
-              </ul>
-          `;
+                <h4>${new Date(forecastItem.dt_txt).toLocaleDateString()}</h4>
+                <img src="${forecastIconUrl}" alt="Weather Icon">
+                <ul>
+                    <li>Temperature: ${forecastItem.main.temp}°C</li>
+                    <li>Humidity: ${forecastItem.main.humidity}%</li>
+                    <li>Wind Speed: ${forecastItem.wind.speed} m/s</li>
+                </ul>
+            `;
     forecastBoxContainer.appendChild(forecastBox);
   }
 }
