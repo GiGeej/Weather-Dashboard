@@ -37,6 +37,8 @@ Include screenshots or GIFs demonstrating the application's functionality. For e
 
 # Screenshot
 
+![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/images/dashboard.png)
+
 # Contributing
 
 Contributions are welcome!
